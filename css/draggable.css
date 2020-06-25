@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: white;
+  font-family: 'Titillium web', sans-serif;
+}
+
+#main {
+  width: 100%;
+  background-color: #131313;
+}
+
+.carousel {
+  width: 100%;
+  background-color: #131313;
+  overflow-x: hidden;
+  height: 80vh;
+  position: relative;
+}
+
+.carousel .images {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: inherit;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transition: .3s transform ease-in-out;
+  transition: .3s transform ease-in-out;
+}
+
+.carousel .images .image-container {
+  position: relative;
+}
+
+.carousel .images .image-container img {
+  width: 100vw;
+  height: 100%;
+}
+
+.carousel .images .image-container .caption {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  padding: 30px;
+  background-color: #13131386;
+}
+
+.carousel .images .image-container .caption h4 {
+  font-size: 32px;
+  text-decoration: underline;
+  margin-bottom: 10px;
+}
+
+.carousel .images .image-container .caption p {
+  font-size: 18px;
+}
+
+.carousel .images .image-container .caption span {
+  color: hotpink;
+}
+
+.carousel .trackers {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+.carousel .trackers .tracker {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  background-color: #ffee00;
+  border-radius: 50%;
+}
+/*# sourceMappingURL=draggable.css.map */

@@ -1,0 +1,70 @@
+$bg: #131313;
+$hg: 80vh;
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+  font-family: 'Titillium web', sans-serif;
+}
+
+#main{
+  width: 100%;
+  background-color: $bg;
+}
+
+.carousel{
+  width: 100%;
+  background-color: $bg;
+  overflow-x: hidden;
+  height: $hg;
+  position: relative;
+  .images{
+    width: fit-content;
+    height: inherit;
+    display: flex;
+    transition: .3s transform ease-in-out;
+    .image-container{
+      position: relative;
+      img{
+        width: 100vw;
+        height: 100%;
+      }
+      .caption{
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        padding: 30px;
+        background-color: #13131386;
+        h4{
+          font-size: 32px;
+          text-decoration: underline;
+          margin-bottom: 10px;
+        }
+        p{
+          font-size: 18px;
+        }
+        span{
+          color: hotpink;
+        }
+      }
+    }
+  }
+  .trackers{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    .tracker{
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      background-color: #ffee00;
+      border-radius: 50%;
+    }
+  }
+}

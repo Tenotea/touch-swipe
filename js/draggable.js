@@ -30,15 +30,7 @@ let completeImageBoxSize = 100 * imgBoxChildren
 let individualChildPercent = 100 / imgBoxChildren
 let limitValue = (imgBoxChildren-1)*individualChildPercent
 let individualChildWidth = imBox.getBoundingClientRect().width/imgBoxChildren
-
-console.log(limitValue);
-
-// let currentPosition = 0;
-// setInterval( ()=> {
-//   currentPosition -= individualChildPercent
-//   if(currentPosition < -limitValue) return;
-//   imBox.style.transform = `translateX(${currentPosition}%)`
-// }, 2000)
+let completeRectBoxSize = imBox.getBoundingClientRect().width
 
 // Create transform function
 let transform = ()=>{
@@ -98,19 +90,37 @@ imBox.addEventListener('touchend', (e)=>{
 imBox.addEventListener('mousemove', (e)=>{
   if (mouseDown) {
     if(e.clientX < 300 || e.clientX > 800) return
-    let moveFrom = stPos == 0 ? 0+1 : (-stPos/individualChildPercent)+1
-    let variableTransformValue = (individualChildWidth*moveFrom) - e.clientX
-    console.log(variableTransformValue);
+    let moveFrom
+    let variableTransformValue
+    if(e.clientX < x1){
+      moveFrom = stPos == 0 ? 0+1 : (-stPos/individualChildPercent)+1
+      variableTransformValue = (individualChildWidth*moveFrom) - e.clientX
+    }
+    if(e.clientX > x1){
+      moveFrom = stPos == -limitValue ? 1 : ((limitValue+stPos)/individualChildPercent)+1
+      variableTransformValue = (completeRectBoxSize - (individualChildWidth*moveFrom)) - e.clientX
+    }
     if(moveFrom >= 5) return
+    if(moveFrom <= 0) return
     transformOnMove(variableTransformValue)
   }
 })
 
 imBox.addEventListener('touchmove', (e)=>{
   if (touchDown) {
-    let moveFrom = stPos == 0 ? 0+1 : (-stPos/individualChildPercent)+1
-    let variableTransformValue = (individualChildWidth*moveFrom) - e.changedTouches[0].clientX
+    let ev = e.changedTouches[0]
+    let variableTransformValue
+    let moveFrom
+    if(ev.clientX < x1){
+      moveFrom = stPos == 0 ? 0+1 : (-stPos/individualChildPercent)+1
+      variableTransformValue = (individualChildWidth*moveFrom) - ev.clientX
+    }
+    if(ev.clientX > x1){
+      moveFrom = stPos == -limitValue ? 1 : ((limitValue+stPos)/individualChildPercent)+1
+      variableTransformValue = (completeRectBoxSize - (individualChildWidth*moveFrom)) - ev.clientX
+    }
     if(moveFrom >= 5) return
+    if(moveFrom <= 0) return
     transformOnMove(variableTransformValue)
   }
 })
